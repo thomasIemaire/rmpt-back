@@ -1,8 +1,8 @@
 module.exports = {
     db: {
-        host: '127.0.0.1',
-        user: 'root',
-        password: 'root',
-        database: 'rmpokertour.dev'
+        host: 'mysql-rmpokertour.alwaysdata.net',
+        user: '362425',
+        password: 'ThisIsPoker12',
+        database: 'rmpokertour_dev'
     }
 };

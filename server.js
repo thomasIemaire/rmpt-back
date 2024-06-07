@@ -11,44 +11,47 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const authRouter = require('./app/routes/authentification.route');
-const tournamentRouter = require('./app/routes/tournament.route');
 const userRouter = require('./app/routes/user.route');
-const seasonRouter = require('./app/routes/season.route');
 
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to RM Poker Tour's API!" });
+  res.json({ message: "Welcome to RM Poker Tour's API!" });
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/authentification/', authRouter);
-app.use('/api/tournaments/', tournamentRouter)
 app.use('/api/users/', userRouter);
-app.use('/api/seasons/', seasonRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on: http://localhost:${PORT}/`);
+  console.log(`Server is running on: http://localhost:${PORT}/`);
 });
 
 const sequelize = require('./app/models/conf.model');
+const RmptEarningsFormat = require('./app/models/RmptEarningsFormat.model');
+const RmptMoreUsers = require('./app/models/RmptMoreUsers.model');
+const RmptPlayed = require('./app/models/RmptPlayed.model');
+const RmptPointsFormat = require('./app/models/RmptPointsFormat.model');
+const RmptResultsTournaments = require('./app/models/RmptResultsTournaments.model');
 const RmptSeasons = require('./app/models/RmptSeasons.model');
-const RmptStatus = require('./app/models/RmptStatus.model');
+const RmptStatusRights = require('./app/models/RmptStatusRights.model');
 const RmptTournaments = require('./app/models/RmptTournaments.model');
+const RmptUserRights = require('./app/models/RmptUserRights.model');
 const RmptUsers = require('./app/models/RmptUsers.model');
-const RmptPlays = require('./app/models/RmptPlays.model');
+const RmptUserStatus = require('./app/models/RmptUserStatus.model');
 
-RmptUsers.belongsTo(RmptStatus, { foreignKey: 'fkstatus', as: 'status' });
-
-RmptTournaments.belongsTo(RmptUsers, { foreignKey: 'fkhost', as: 'host' });
-RmptTournaments.belongsTo(RmptSeasons, { foreignKey: 'fkseason', as: 'season' });
-
-RmptPlays.belongsTo(RmptTournaments, { foreignKey: 'fktournament', as: 'tournament' });
-RmptPlays.belongsTo(RmptUsers, { foreignKey: 'fkuser', as: 'user' });
-RmptPlays.belongsTo(RmptUsers, { foreignKey: 'fkkiller', as: 'killer' });
-
+RmptUsers.belongsTo(RmptUserStatus, { foreignKey: 'status' });
+RmptMoreUsers.belongsTo(RmptUsers, { foreignKey: 'user' });
+RmptTournaments.belongsTo(RmptUsers, { foreignKey: 'host' });
+RmptTournaments.belongsTo(RmptSeasons, { foreignKey: 'season' });
+RmptResultsTournaments.belongsTo(RmptTournaments, { foreignKey: 'tournament' });
+RmptPlayed.belongsTo(RmptUsers, { foreignKey: 'user' });
+RmptPlayed.belongsTo(RmptTournaments, { foreignKey: 'tournament' });
+RmptPlayed.belongsTo(RmptUsers, { foreignKey: 'killer', as: 'Killer' });
+RmptStatusRights.belongsTo(RmptUserStatus, { foreignKey: 'status' });
+RmptStatusRights.belongsTo(RmptUserRights, { foreignKey: 'right' });
 
 (async () => {
   try {

@@ -4,68 +4,33 @@ const sequelize = require('./conf.model');
 class RmptTournaments extends Model { }
 
 RmptTournaments.init({
-  tid: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  name: {
-    type: DataTypes.STRING(128),
-    allowNull: false
-  },
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
-  slots: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  fkhost: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'rmpt_users',
-      key: 'uid'
+    rowid: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    name: DataTypes.STRING,
+    slots: DataTypes.INTEGER,
+    date: DataTypes.DATE,
+    host: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'Users',
+            key: 'rowid'
+        }
+    },
+    season: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'Seasons',
+            key: 'rowid'
+        }
     }
-  },
-  description: {
-    type: DataTypes.BLOB
-  },
-  fkseason: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'rmpt_seasons',
-      key: 'sid'
-    }
-  },
-  image: {
-    type: DataTypes.STRING(255),
-    unique: true
-  },
-  winner: {
-    type: DataTypes.CHAR(8)
-  },
-  looser: {
-    type: DataTypes.CHAR(8)
-  },
-  board: {
-    type: DataTypes.CHAR(20)
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-  updated_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-    onUpdate: DataTypes.NOW
-  }
 }, {
-  sequelize,
-  modelName: 'rmpt_tournaments',
-  timestamps: false
+    sequelize,
+    modelName: 'Tournaments',
+    tableName: 'rmpt_tournaments',
+    timestamps: false
 });
 
 module.exports = RmptTournaments;
