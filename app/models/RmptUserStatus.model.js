@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptUserStatus extends Model { }
 
 RmptUserStatus.init({
-    rowid: {
+    usid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -13,7 +13,7 @@ RmptUserStatus.init({
     shortname: DataTypes.STRING
 }, {
     sequelize,
-    modelName: 'UserStatus',
+    modelName: 'RmptUserStatus',
     tableName: 'rmpt_userstatus',
     timestamps: false
 });

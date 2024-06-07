@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptPointsFormat extends Model { }
 
 RmptPointsFormat.init({
-    rowid: {
+    pfid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -14,7 +14,7 @@ RmptPointsFormat.init({
     points: DataTypes.INTEGER
 }, {
     sequelize,
-    modelName: 'PointsFormat',
+    modelName: 'RmptPointsFormat',
     tableName: 'rmpt_pointsformat',
     timestamps: false
 });

@@ -53,6 +53,8 @@ RmptPlayed.belongsTo(RmptUsers, { foreignKey: 'killer', as: 'Killer' });
 RmptStatusRights.belongsTo(RmptUserStatus, { foreignKey: 'status' });
 RmptStatusRights.belongsTo(RmptUserRights, { foreignKey: 'right' });
 
+RmptUsers.hasOne(RmptMoreUsers, { foreignKey: 'user' });
+
 (async () => {
   try {
     await sequelize.sync();

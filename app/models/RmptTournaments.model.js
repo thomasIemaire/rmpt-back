@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptTournaments extends Model { }
 
 RmptTournaments.init({
-    rowid: {
+    tid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -15,20 +15,20 @@ RmptTournaments.init({
     host: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Users',
-            key: 'rowid'
+            model: 'RmptUsers',
+            key: 'uid'
         }
     },
     season: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Seasons',
-            key: 'rowid'
+            model: 'RmptSeasons',
+            key: 'sid'
         }
     }
 }, {
     sequelize,
-    modelName: 'Tournaments',
+    modelName: 'RmptTournaments',
     tableName: 'rmpt_tournaments',
     timestamps: false
 });

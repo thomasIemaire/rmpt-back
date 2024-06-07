@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptEarningsFormat extends Model { }
 
 RmptEarningsFormat.init({
-    rowid: {
+    efid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -14,7 +14,7 @@ RmptEarningsFormat.init({
     earnings: DataTypes.DECIMAL(10, 2)
 }, {
     sequelize,
-    modelName: 'EarningsFormat',
+    modelName: 'RmptEarningsFormat',
     tableName: 'rmpt_earningsformat',
     timestamps: false
 });

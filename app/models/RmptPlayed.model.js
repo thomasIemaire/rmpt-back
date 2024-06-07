@@ -8,29 +8,29 @@ RmptPlayed.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         references: {
-            model: 'Users',
-            key: 'rowid'
+            model: 'RmptUsers',
+            key: 'uid'
         }
     },
     tournament: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         references: {
-            model: 'Tournaments',
-            key: 'rowid'
+            model: 'RmptTournaments',
+            key: 'tid'
         }
     },
     place: DataTypes.INTEGER,
     killer: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Users',
-            key: 'rowid'
+            model: 'RmptUsers',
+            key: 'uid'
         }
     }
 }, {
     sequelize,
-    modelName: 'Played',
+    modelName: 'RmptPlayed',
     tableName: 'rmpt_played',
     timestamps: false
 });

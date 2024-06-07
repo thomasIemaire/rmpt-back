@@ -8,8 +8,8 @@ RmptResultsTournaments.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         references: {
-            model: 'Tournaments',
-            key: 'rowid'
+            model: 'RmptTournaments',
+            key: 'tid'
         }
     },
     winnerhand: DataTypes.STRING,
@@ -17,7 +17,7 @@ RmptResultsTournaments.init({
     finalboard: DataTypes.STRING
 }, {
     sequelize,
-    modelName: 'ResultsTournaments',
+    modelName: 'RmptResultsTournaments',
     tableName: 'rmpt_resultstournaments',
     timestamps: false
 });

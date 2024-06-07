@@ -17,7 +17,7 @@ async function getUserByCredentials(username, password) {
         if (!passwordMatch) return null;
         let moreuser = user.MoreUser;
         moreuser = moreuser ? { firstname: moreuser.firstname, lastname: moreuser.lastname, email: moreuser.email, phone: moreuser.phone } : {};
-        user = { uid: user.rowid, username: user.username, status: user.status, ...moreuser };
+        user = { uid: user.uid, username: user.username, status: user.status, ...moreuser };
         return user;
     } catch (error) {
         throw new Error("Erreur lors de la recherche de l'utilisateur par ses identifiants : " + error.message);
@@ -36,14 +36,14 @@ async function setUserByCredentials(username, password, status) {
 
         if (!user) return null;
         let moreuser = await RmptMoreUsers.create({
-            user: user.rowid,
+            user: user.uid,
             firstname: null,
             lastname: null,
             email: null,
             phone: null
         });
         moreuser = { firstname: moreuser.firstname, lastname: moreuser.lastname, email: moreuser.email, phone: moreuser.phone };
-        user = { uid: user.rowid, username: user.username, status: user.status, ...moreuser };
+        user = { uid: user.uid, username: user.username, status: user.status, ...moreuser };
         return user;
     } catch (err) {
         throw new Error(err);

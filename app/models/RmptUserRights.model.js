@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptUserRights extends Model { }
 
 RmptUserRights.init({
-    rowid: {
+    urid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -13,7 +13,7 @@ RmptUserRights.init({
     description: DataTypes.TEXT
 }, {
     sequelize,
-    modelName: 'UserRights',
+    modelName: 'RmptUserRights',
     tableName: 'rmpt_userrights',
     timestamps: false
 });

@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptSeasons extends Model { }
 
 RmptSeasons.init({
-    rowid: {
+    sid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -16,7 +16,7 @@ RmptSeasons.init({
     enddate: DataTypes.DATE
 }, {
     sequelize,
-    modelName: 'Seasons',
+    modelName: 'RmptSeasons',
     tableName: 'rmpt_seasons',
     timestamps: false
 });

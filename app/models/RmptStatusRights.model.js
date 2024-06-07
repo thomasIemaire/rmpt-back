@@ -8,16 +8,16 @@ RmptStatusRights.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         references: {
-            model: 'UserStatus',
-            key: 'rowid'
+            model: 'RmptUserStatus',
+            key: 'usid'
         }
     },
     right: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         references: {
-            model: 'UserRights',
-            key: 'rowid'
+            model: 'RmptUserRights',
+            key: 'urid'
         }
     },
     access: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ RmptStatusRights.init({
     delete: DataTypes.INTEGER
 }, {
     sequelize,
-    modelName: 'StatusRights',
+    modelName: 'RmptStatusRights',
     tableName: 'rmpt_statusrights',
     timestamps: false
 });

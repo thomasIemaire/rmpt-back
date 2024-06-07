@@ -4,7 +4,7 @@ const sequelize = require('./conf.model');
 class RmptUsers extends Model { }
 
 RmptUsers.init({
-    rowid: {
+    uid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -14,13 +14,13 @@ RmptUsers.init({
     status: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'UserStatus',
-            key: 'rowid'
+            model: 'RmptUserStatus',
+            key: 'usid'
         }
     }
 }, {
     sequelize,
-    modelName: 'Users',
+    modelName: 'RmptUsers',
     tableName: 'rmpt_users',
     timestamps: false
 });

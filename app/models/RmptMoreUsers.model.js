@@ -8,8 +8,8 @@ RmptMoreUsers.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         references: {
-            model: 'Users',
-            key: 'rowid'
+            model: 'RmptUsers',
+            key: 'uid'
         }
     },
     firstname: DataTypes.STRING,
@@ -18,7 +18,7 @@ RmptMoreUsers.init({
     phone: DataTypes.STRING
 }, {
     sequelize,
-    modelName: 'MoreUsers',
+    modelName: 'RmptMoreUsers',
     tableName: 'rmpt_moreusers',
     timestamps: false
 });
