@@ -43,8 +43,8 @@ router.post('/signin', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
     try {
-        const { username, password, status } = req.body;
-        if (!status) status = 3
+        const { username, password } = req.body;
+        let status = req.body.status ? req.body.status : 3;
         let user = await authentificationService.setUserByCredentials(username, password, status);
 
         if(user.message) res.status(404).send({ message: user.message });

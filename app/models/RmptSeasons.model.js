@@ -13,7 +13,10 @@ RmptSeasons.init({
     shortname: DataTypes.STRING,
     color: DataTypes.STRING,
     startdate: DataTypes.DATE,
-    enddate: DataTypes.DATE
+    enddate: {
+        type: DataTypes.DATE,
+        allowNull: true
+    }
 }, {
     sequelize,
     modelName: 'RmptSeasons',

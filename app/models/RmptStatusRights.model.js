@@ -21,6 +21,7 @@ RmptStatusRights.init({
         }
     },
     access: DataTypes.INTEGER,
+    create: DataTypes.INTEGER,
     modify: DataTypes.INTEGER,
     delete: DataTypes.INTEGER
 }, {

@@ -42,25 +42,8 @@ async function setNewAvatar(username, base64) {
     }
 }
 
-async function getStatusByUserId(uid) {
-    try {
-        const status = await RmptUsers.findOne({
-            where: {
-                uid: uid
-            },
-            attributes: ['fkstatus']
-        });
-
-        if (!status) return null;
-        return status;
-    } catch (err) {
-        throw new Error(`Erreur lors de la demande de status : ${err.message}`)
-    }
-}
-
 module.exports = {
     getUsers,
     getUserByUsername,
-    setNewAvatar,
-    getStatusByUserId,
+    setNewAvatar
 }

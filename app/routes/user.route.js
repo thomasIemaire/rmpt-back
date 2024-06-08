@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const userService = require('./../services/user.service');
 const authentification  = require("../middlewares/authentification");
+const userService = require('./../services/user.service');
 
 router.get('/', [authentification.verifyToken], async (req, res, next) => {
     try {
@@ -30,15 +30,6 @@ router.post('/:username/avatar', [authentification.verifyToken], async (req, res
         } else res.json({ message: 'Vous ne pouvez pas modifier la photo de profil d\'un autre utilisateur.' });
     } catch (err) {
         next(err);
-    }
-});
-
-router.get('/:uid/status', [authentification.verifyToken], async (req, res, next) => {
-    try {
-        let status = await userService.getStatusByUserId(req.params.uid);
-        res.json({ status });
-    } catch (err) {
-        next(err)
     }
 });
 

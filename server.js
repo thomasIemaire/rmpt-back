@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const authRouter = require('./app/routes/authentification.route');
 const userRouter = require('./app/routes/user.route');
+const seasonRouter = require('./app/routes/season.route');
 
 app.use(cors());
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/authentification/', authRouter);
 app.use('/api/users/', userRouter);
+app.use('/api/seasons/', seasonRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
