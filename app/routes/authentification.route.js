@@ -8,6 +8,14 @@ var jwt = require("jsonwebtoken");
 
 router.get('/', [authentification.verifyToken], async (req, res, next) => {
     try {
+        res.status(200).send({ uid: req.uid, username: req.username, status: req.status });
+    } catch(err) {
+        next(err);
+    }
+});
+
+router.get('/refresh', [authentification.verifyToken], async (req, res, next) => {
+    try {
         let accessToken = jwt.sign({
             uid: req.uid,
             username: req.username,
